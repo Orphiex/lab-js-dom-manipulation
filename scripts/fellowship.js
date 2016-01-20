@@ -25,30 +25,55 @@ var body = document.querySelector('body');
 
 function makeMiddleEarth() {
   // create a section tag with an id of middle-earth
+  var middleEarth = document.createElement("section");
+  middleEarth.setAttribute("id", "middle-earth");
   // add each land as an article tag
+  lands.forEach(function(landName) {
+    var land = document.createElement("article");
   // inside each article tag include an h1 with the name of the land
+    land.innerHTML = "<h1>" + landName + "</h1>";
+    middleEarth.appendChild(land);
+  });
   // append middle-earth to your document body
+  body.appendChild(middleEarth);
 }
 
 makeMiddleEarth();
 
 
 // Part 2
-
+var theShire = document.querySelectorAll("article")[0];
+var rivendell = document.querySelectorAll("article")[1];
+var mordor = document.querySelectorAll("article")[2];
 function makeHobbits() {
-  // display an unordered list of hobbits in the shire (which is the second article tag on the page)
-  // give each hobbit a class of hobbit
+  // display an unordered list of hobbits in the shire (which is the first article tag on the page)
+  var hobbitsList = document.createElement("ul");
+  hobbits.forEach(function(hobbitName){
+    // give each hobbit a class of hobbit
+    hobbitsList.innerHTML += "<li class=\"hobbit\">" + hobbitName + "</ul>";
+  });
+  theShire.appendChild(hobbitsList)
 }
+
+makeHobbits();
 
 
 // Part 3
 
+var frodo = theShire.querySelector(".hobbit");
 function keepItSecretKeepItSafe() {
   // create a div with an id of 'the-ring'
+  var theOneRing = document.createElement("div");
+  theOneRing.setAttribute("id", "the-ring");
   // give the div a class of 'magic-imbued-jewelry'
+  theOneRing.setAttribute("class", "magic-imbued-jewelry");
   // add an event listener so that when a user clicks on the ring, the nazgulScreech function (provided) is invoked
+  theOneRing.addEventListener("click", nazgulScreech);
   // add the ring as a child of Frodo
+  frodo.appendChild(theOneRing);
 }
+
+keepItSecretKeepItSafe();
 
 
 // Part 4
@@ -56,34 +81,57 @@ function keepItSecretKeepItSafe() {
 
 function makeBuddies() {
   // create an aside tag
+  var aside = document.createElement("aside");
   // attach an unordered list of the 'buddies' in the aside
+  var buddiesList = document.createElement("ul");
+  aside.appendChild(buddiesList);
+  buddies.forEach(function(buddyName){
+    buddiesList.innerHTML += "<li>" + buddyName + "</li>";
+  });
   // insert your aside as a child element of rivendell
+  rivendell.appendChild(aside);
 }
+
+makeBuddies();
 
 
 // Part 5
 
-
+var strider = rivendell.querySelectorAll("li")[3];
 function beautifulStranger() {
   // change the 'Strider' textnode to 'Aragorn'
+  strider.textContent = "Aragorn";
 }
+
+beautifulStranger();
 
 
 // Part 6
 
 function leaveTheShire() {
   // assemble the hobbits and move them to Rivendell
+  rivendell.appendChild(theShire.querySelector("ul"));
 }
 
+leaveTheShire();
 
 // Part 7
 
-
+var collective = rivendell.querySelectorAll("li");
 function forgeTheFellowShip() {
   // create a new div called 'the-fellowship' within rivendell
+  var fellowship = document.createElement("div");
+  fellowship.setAttribute("id", "the-fellowship");
+  rivendell.appendChild(fellowship);
   // add each hobbit and buddy one at a time to 'the-fellowship'
   // after each character is added make an alert that they have joined your party
+  for (var i = 0; i < collective.length; i++) {
+    fellowship.appendChild(collective[i]);
+    console.log(collective[i].textContent + " has joined the Fellowship!");
+  }
 }
+
+forgeTheFellowShip();
 
 
 // Part 8
@@ -95,6 +143,8 @@ function theBalrog() {
   // make the background 'white', add a grey border
 }
 
+theBalrog();
+
 
 // Part 9
 
@@ -105,6 +155,8 @@ function hornOfGondor() {
   // Remove Boromir from the Fellowship
 }
 
+hornOfGondor();
+
 
 // Part 10
 
@@ -112,6 +164,8 @@ function itsDangerousToGoAlone(){
   // take Frodo and Sam out of the fellowship and move them to Mordor
   // add a div with an id of 'mount-doom' to Mordor
 }
+
+itsDangerousToGoAlone();
 
 
 // Part 11
@@ -122,6 +176,8 @@ function weWantsIt() {
   // Move Gollum into Mount Doom
 }
 
+weWantsIt();
+
 
 // Part 12
 
@@ -130,3 +186,5 @@ function thereAndBackAgain() {
   // remove all the baddies from the document
   // Move all the hobbits back to the shire
 }
+
+thereAndBackAgain();
