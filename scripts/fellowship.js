@@ -170,7 +170,11 @@ hornOfGondor();
 
 function itsDangerousToGoAlone(){
   // take Frodo and Sam out of the fellowship and move them to Mordor
+
   // add a div with an id of 'mount-doom' to Mordor
+  var mountDoom = document.createElement("div");
+  mountDoom.setAttribute("id", "mount-doom");
+  mordor.appendChild(mountDoom);
 }
 
 itsDangerousToGoAlone();
@@ -180,8 +184,13 @@ itsDangerousToGoAlone();
 
 function weWantsIt() {
   // Create a div with an id of 'gollum' and add it to Mordor
+  var smeagol = document.createElement("div");
+  smeagol.setAttribute("id", "gollum");
+  mordor.appendChild(smeagol);
   // Remove the ring from Frodo and give it to Gollum
+  document.getElementById("the-ring").appendChild(document.getElementById("gollum"));
   // Move Gollum into Mount Doom
+  document.getElementById("gollum").appendChild(document.getElementById("mount-doom"));
 }
 
 weWantsIt();
