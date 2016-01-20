@@ -117,14 +117,15 @@ leaveTheShire();
 
 // Part 7
 
-var collective = rivendell.querySelectorAll("li");
+var fellowship = document.createElement("div");
+fellowship.setAttribute("id", "the-fellowship");
+rivendell.appendChild(fellowship);
 function forgeTheFellowShip() {
   // create a new div called 'the-fellowship' within rivendell
-  var fellowship = document.createElement("div");
-  fellowship.setAttribute("id", "the-fellowship");
-  rivendell.appendChild(fellowship);
+  var collective = rivendell.querySelectorAll("li");
   // add each hobbit and buddy one at a time to 'the-fellowship'
   // after each character is added make an alert that they have joined your party
+  // do in one line
   for (var i = 0; i < collective.length; i++) {
     fellowship.appendChild(collective[i]);
     console.log(collective[i].textContent + " has joined the Fellowship!");
@@ -136,11 +137,13 @@ forgeTheFellowShip();
 
 // Part 8
 
-
+var gandalf = fellowship.querySelector("li");
 function theBalrog() {
   // change the 'Gandalf' textNode to 'Gandalf the White'
+  gandalf.textContent = "Gandalf the White";
   // apply style to the element
   // make the background 'white', add a grey border
+  gandalf.setAttribute("style", "background-color: white; border-width: 5px; border-color: gray;");
 }
 
 theBalrog();
@@ -148,11 +151,16 @@ theBalrog();
 
 // Part 9
 
+var boromir = fellowship.querySelectorAll("li")[4];
 function hornOfGondor() {
   // pop up an alert that the horn of gondor has been blown
+  alert("The horn of Gondor has been blown!")
   // Boromir's been killed by the Uruk-hai!
+  alert("Boromir's been killed by the Uruk-Hai!")
   // put a linethrough on boromir's name
-  // Remove Boromir from the Fellowship
+  boromir.setAttribute("style", "text-decoration: line-through");
+  // Remove Boromir from the Fellowship using removeChild()
+  fellowship.removeChild(boromir);
 }
 
 hornOfGondor();
