@@ -143,7 +143,7 @@ function theBalrog() {
   gandalf.textContent = "Gandalf the White";
   // apply style to the element
   // make the background 'white', add a grey border
-  gandalf.setAttribute("style", "background-color: white; border-width: 5px; border-color: gray;");
+  gandalf.setAttribute("style", "background-color: white; border: 5px solid grey;");
 }
 
 theBalrog();
@@ -167,10 +167,11 @@ hornOfGondor();
 
 
 // Part 10
-
+var samwise = fellowship.querySelectorAll("li")[5];
 function itsDangerousToGoAlone(){
   // take Frodo and Sam out of the fellowship and move them to Mordor
   mordor.appendChild(frodo);
+  mordor.appendChild(samwise);
   // add a div with an id of 'mount-doom' to Mordor
   var mountDoom = document.createElement("div");
   mountDoom.setAttribute("id", "mount-doom");
@@ -187,9 +188,9 @@ function weWantsIt() {
   smeagol.setAttribute("id", "gollum");
   mordor.appendChild(smeagol);
   // Remove the ring from Frodo and give it to Gollum
-  smeagol.appendChild(document.getElementById("the-ring"));
+  smeagol.appendChild(document.querySelector("#the-ring"));
   // Move Gollum into Mount Doom
-  document.getElementById("mount-doom").appendChild(smeagol);
+  document.querySelector("#mount-doom").appendChild(smeagol);
 }
 
 weWantsIt();
@@ -202,9 +203,9 @@ function thereAndBackAgain() {
   smeagol.removeChild(document.getElementById("the-ring"));
   document.getElementById('mount-doom').removeChild(smeagol);
   // remove all the baddies from the document
-    // What other baddies are left?
+  mordor.parentNode.setAttribute("style", "background: none");
   // Move all the hobbits back to the shire
-  theShire.appendChild(document.getElementsByClassName("hobbit"));
+  theShire.appendChild(document.querySelectorAll(".hobbit"));
 }
 
 thereAndBackAgain();
